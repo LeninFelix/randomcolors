@@ -1,0 +1,134 @@
+//-------------------------------------------------------------------------------------------------------
+//-------------------------------------------------Animaciones-------------------------------------------
+//-------------------------------------------------------------------------------------------------------
+
+/// Animacion Fade de entrada y salida
+/// 
+/// @ejemplo
+/// 
+/// 	.class-fade{
+/// 		@include fade(TIEMPO/opcional/, REPETICIONES/opcional/);
+/// 		@include fade(3, 0, 2);
+/// 	}
+/// 
+
+@mixin fadeInOut($time: 1, $count: 1){
+	// animation: ;
+	animation-name: fadeInOut;
+	animation-direction: normal;
+	animation-duration: #{$time}s;
+	animation-delay: 0;
+	animation-fill-mode: forwards;
+	animation-play-state: running;
+	animation-timing-function: ease-out;
+	
+	@if ($count == siempre){
+		animation-iteration-count: infinite;
+	}
+	@else{
+		animation-iteration-count: $count;
+	}
+}
+@keyframes fadeInOut{
+	0%{
+		opacity: 0;
+	}
+	50%{
+		opacity: 1;
+	}
+	100%{
+		opacity: 0;
+	}
+}
+
+/// Animacion Fade de entrada
+/// 
+/// @ejemplo
+/// 
+/// 	.class-fade{
+/// 		@include fadeIn(TIEMPO/opcional/, REPETICIONES/opcional/);
+/// 		@include fadeIn(3, 0, 2);
+/// 	}
+/// 
+
+@mixin fadeIn($time: 1, $count: 1){
+	// animation: ;
+	animation-name: fadeIn;
+	animation-direction: normal;
+	animation-duration: #{$time}s;
+	animation-delay: 0;
+	animation-fill-mode: forwards;
+	animation-play-state: running;
+	animation-timing-function: ease-out;
+	
+	@if ($count == siempre){
+		animation-iteration-count: infinite;
+	}
+	@else{
+		animation-iteration-count: $count;
+	}
+}
+@keyframes fadeIn{
+	0%{
+		opacity: 0;
+	}
+	100%{
+		opacity: 1;
+	}
+}
+
+/// Animacion Fade de salida
+/// 
+/// @ejemplo
+/// 
+/// 	.class-fade{
+/// 		@include fadeOut(TIEMPO/opcional/, REPETICIONES/opcional/);
+/// 		@include fadeOut(3, 0, 2);
+/// 	}
+/// 
+
+@mixin fadeOut($time: 1, $count: 1){
+	// animation: ;
+	animation-name: fadeOut;
+	animation-direction: normal;
+	animation-duration: #{$time}s;
+	animation-delay: 0;
+	animation-fill-mode: forwards;
+	animation-play-state: running;
+	animation-timing-function: ease-out;
+	
+	@if ($count == siempre){
+		animation-iteration-count: infinite;
+	}
+	@else{
+		animation-iteration-count: $count;
+	}
+}
+@keyframes fadeOut{
+	0%{
+		opacity: 1;
+	}
+	100%{
+		opacity: 0;
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

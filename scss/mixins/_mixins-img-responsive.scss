@@ -1,0 +1,67 @@
+/*------------------------------------------------------------------------------------*/
+/*---------------------------------Imagen Reponsive-----------------------------------*/
+/*------------------------------------------------------------------------------------*/
+
+/// Debe incluirse al contenedor padre del div con el background-img!
+/// 
+/// @ejemplo
+///
+///     #container-back-img {
+///       @include back-img("img-post");
+///     }
+/// 
+
+@mixin back-img($back: null) {
+    width          : 100%;
+  	height         : 0;
+  	overflow       : hidden;
+  	padding-bottom : 56.25%;
+  	position       : relative;
+
+  	@if $back != null {
+  		.#{$back} {
+      		position : absolute;
+      		top      : 0;
+      		left     : 0;
+      		width    : 100%;
+      		height   : 100%;
+          background-size: cover;
+          background-position: center;
+          background-repeat: no-repeat;
+    	}
+  	} 
+  	@else {
+    	> .img-post,
+        iframe,
+        video{
+      		position : absolute;
+      		top      : 0;
+      		left     : 0;
+      		width    : 100%;
+      		height   : 100%;
+          background-size: cover;
+          background-position: center;
+          background-repeat: no-repeat;
+    	}
+  	}
+}
+
+
+/// Debe incluirse directamente al contenedor que va a ser afectado!
+/// 
+/// @ejemplo
+/// 
+///     .img {
+///       @include img;
+///     }
+/// 
+
+
+@mixin img{
+    max-width: 100%;
+    height: auto;
+}
+
+
+
+

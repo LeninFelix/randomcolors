@@ -1,0 +1,248 @@
+//--------------------------------------------------------------------------------------------------------------
+//--------------------------------------------Slider------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------------------
+
+
+
+/// @Mixin para con las Propiedades necesarias para hacer un slider!
+/// @Recuerda que las clases deben de estar iguales en el html y solo van IMG!
+/// @Se debe de colocar en el padre del slider-container!
+/// 
+/// @ejemplo
+///
+///     .padre-del-slider-container{
+///         @include slider;
+///     }
+/// 
+/// 
+/// 
+
+@mixin slider($flechas: false, $puntos: false, $expandir: false, $dotsBallStyle: true, $dotsLinesStyle: false, $dotsCircleStyle: false){
+	background-color: #000;
+	@include back-img(galeria);
+	z-index: 5000;
+
+	&.modal{
+		@include modal(200);
+		.btn-expandir{
+			display: none;
+		}
+
+		.btn-close{
+			display: block;
+		}
+	}
+	&:hover{
+		%place-flechas,
+		.puntos,
+		.btn-expandir,
+		.btn-close{
+			opacity: 1;
+		}
+	}
+
+	.galeria{
+		@include back-img;
+		@include centro-absoluto;
+	}
+	
+
+	$size: 30;
+	$transition: .3s;
+	%place-flechas{
+		@include center-flex;
+		z-index: 2;
+		cursor: pointer;
+
+		background-position: center;
+		background-size: cover;
+		background-repeat: no-repeat;
+		@include cuadro($size);
+		top: calc(50% - #{$size / 3} * 2px);
+
+		opacity: 0;
+		transition: $transition;
+
+		@include phone{
+			@include cuadro($size / 3 * 2);
+		}
+		
+		display: none;
+		@if ($flechas == true){
+			display: flex;
+		}
+	}
+
+	.flecha-slider-izq{
+		@include absoluto-t-l(0, 5);
+		top: calc(50% - #{$size / 3} * 2px);
+		@extend %place-flechas;
+
+		@include tablet{
+			left: 5px;
+		}
+
+		@include phone{
+			color: gray(170);
+			top: calc(50% - (#{$size / 3} * 2px) / 3 * 2);
+		}
+	}
+
+	.flecha-slider-der{
+		@include absoluto-t-r(0, 5);
+		top: calc(50% - #{$size / 3} * 2px);
+		@extend %place-flechas;
+
+		@include tablet{
+			right: 5px;
+		}
+
+		@include phone{
+			color: gray(170);
+			top: calc(50% - (#{$size / 3} * 2px) / 3 * 2);
+		}
+	}
+	
+	.btn-expandir{
+		transition: $transition;
+		opacity: 0;
+		display: none;
+		cursor: pointer;
+		z-index: 2;
+		@include cuadro(20);
+		@include absoluto-t-r(5, 5);
+
+		display: none;
+		@if ($expandir == true){
+			display: block;
+		}
+
+	}
+
+	.btn-close{
+		display: none;
+		cursor: pointer;
+		z-index: 2;
+		opacity: 0;
+		transition: $transition;
+	}
+	
+
+	@if($dotsBallStyle == true){
+		.puntos{
+			transition: $transition;
+			opacity: 0;
+			z-index: 2;
+			@include absoluto-b-l(5, 0);
+			@include center-flex;
+			width: 100%;
+
+			display: none;
+			@if ($puntos == true){
+				display: flex;
+			}
+
+			.dot{
+				position: relative;
+				border-radius: 50%;
+				background-color: $white;
+				@include cuadro(15);
+				@include margin-h(5);
+
+				transition: $transition;
+
+				cursor: pointer;
+
+				&:hover{
+					background-color: gray(100,1);
+				}
+				
+				&.dot-select{
+					background-color: gray(100,1);
+				}
+			}
+		}
+	}
+
+	@if($dotsLinesStyle == true){
+		.puntos{
+			transition: $transition;
+			opacity: 0;
+			z-index: 2;
+			@include absoluto-b-l(5, 0);
+			@include center-flex;
+			width: 100%;
+
+			display: none;
+			@if ($puntos == true){
+				display: flex;
+			}
+
+			.dot{
+				position: relative;
+				border-radius: 0;
+				background-color: $white;
+				@include margin-h(0);
+				width: 30px;
+				height: 3px;
+
+				transition: $transition;
+
+				cursor: pointer;
+
+				&:hover{
+					background-color: gray(100,1);
+				}
+				
+				&.dot-select{
+					background-color: gray(100,1);
+				}
+			}
+		}
+	}
+
+	@if($dotsCircleStyle == true){
+		.puntos{
+			transition: $transition;
+			opacity: 0;
+			z-index: 2;
+			@include absoluto-b-l(5, 0);
+			@include center-flex;
+			width: 100%;
+
+			display: none;
+			@if ($puntos == true){
+				display: flex;
+			}
+
+			.dot{
+				position: relative;
+				border-radius: 50%;
+				background-color: transparent;
+				border: 2px solid $white;
+				@include cuadro(12);
+				@include margin-h(5);
+
+				transition: $transition;
+
+				cursor: pointer;
+
+				&:hover{
+					border: 2px solid gray(100,1);
+				}
+				
+				&.dot-select{
+					border: 2px solid gray(100,1);
+				}
+			}
+		}
+	}
+}
+
+
+
+
+
+
+
+

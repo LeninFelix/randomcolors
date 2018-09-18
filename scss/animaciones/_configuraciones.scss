@@ -1,0 +1,29 @@
+//-------------------------------------------------------------------------------------------------------
+//-------------------------------------------------Animaciones-------------------------------------------
+//-------------------------------------------------------------------------------------------------------
+
+@mixin animationionGeneral{
+
+	animation-name: name;
+	animation-direction: normal, alternate, reverse;
+	animation-duration: $time;
+	animation-delay: $delay;
+	animation-fill-mode: forwards, backwards, both;
+	animation-play-state: paused, running;
+	animation-iteration-count: (number), infinite;
+	animation-timing-function: linear|ease|ease-in|ease-out|ease-in-out|step-start|step-end|steps(int,start|end)|cubic-bezier(n,n,n,n);
+
+}
+
+/// Animacion en Pausa / Pausa la animacion!
+/// 
+/// @ejemplo
+/// 
+/// 	.class-animada{
+/// 		@include pausa;
+/// 	}
+/// 
+
+@mixin pausa{
+	animation-play-state: paused;
+}

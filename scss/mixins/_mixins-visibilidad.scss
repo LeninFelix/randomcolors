@@ -1,0 +1,284 @@
+//--------------------------------------------------------------------------------------------------------------
+//-------------------------------------------------Visibilidad--------------------------------------------------
+//--------------------------------------------------------------------------------------------------------------
+
+/// Muestra el contenedor hasta que se alcance cierto Media query!
+/// 
+/// @ejemplo
+/// @Quiero que sea visible el contenedor a partir de tablets!
+/// 
+/// 	.container{
+/// 		@include mostrar-despues-de(768px);
+/// 	}
+/// 
+
+@mixin mostrar-despues-de($mq){
+
+	@if ($mq == tablet){
+		@include tablet(){ //max-width
+			display: none;
+		}
+	}
+	@else if ($mq == phone){
+		@include phone(){ //max-width
+			display: none;
+		}
+	}
+	@else{
+		@include hasta($mq){ //max-width
+			display: none;
+		}
+	}
+}
+
+/// Oculta el contenedor hasta que alcance el Media Query!
+/// 
+/// @ejemplo
+/// @Quiero que ya no se vea el contenedor a partir de tablets!
+/// 
+/// 	.container{
+/// 		@include ocultar-despues-de(768px);
+/// 	}
+/// 
+
+@mixin ocultar-despues-de($mq){
+	@include desde($mq){ //min-width
+		display: none;
+	}
+}
+
+/// @Centra el contenedor Absolutamente dentro de su contenedor padre en posicion relativa
+/// 
+/// @ejemplo
+/// @Quiero centrar a .caja del contenedor .container
+/// @Recuerda que el contenedor debe tener una posicion Relativa!
+/// 
+/// 	.container{
+/// 
+///			position: relative;
+/// 
+///			.caja{
+///
+/// 			@include centro-absoluto;
+///
+///			}
+/// 	}
+/// 
+
+@mixin centro-absoluto{
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+}
+
+/// Deja el contenedor en posicion absoluta y lo alinea a la izquierda-arriba.
+/// 
+/// @ejemplo
+/// @Quiero posicionar .caja a la izquierda de forma absoluta!
+/// 
+/// 
+/// 	.container{
+/// 		
+/// 		.caja{
+/// 			@include absoluto-izq-arriba;
+/// 		}
+/// 	}
+/// 
+
+@mixin absoluto-t-l($t: 0, $l: 0){
+	position: absolute;
+	top: #{$t}px;
+	left: #{$l}px;
+}
+
+/// Deja el contenedor en posicion absoluta y lo alinea a la derecha-arriba.
+/// 
+/// @ejemplo
+/// @Quiero posicionar .caja a la derecha de forma absoluta!
+/// 
+/// 	.container{
+/// 		
+/// 		.caja{
+/// 			@include absoluto-der-arriba;
+/// 		}
+/// 	}
+/// 
+
+@mixin absoluto-t-r($t: 0, $r: 0){
+	position: absolute;
+	top: #{$t}px;
+	right: #{$r}px;
+}
+
+/// Deja el contenedor en posicion absoluta y lo alinea a la izquierda-abajo.
+/// 
+/// @ejemplo
+/// @Quiero posicionar .caja a la derecha de forma absoluta!
+/// 
+/// 	.container{
+/// 		
+/// 		.caja{
+/// 			@include absoluto-izq-abajo;
+/// 		}
+/// 	}
+/// 
+
+@mixin absoluto-b-l($b: 0, $l: 0){
+	position: absolute;
+	bottom: #{$b}px;
+	left: #{$l}px;
+}
+
+/// Deja el contenedor en posicion absoluta y lo alinea a la derecha-abajo.
+/// 
+/// @ejemplo
+/// @Quiero posicionar .caja a la derecha de forma absoluta!
+/// 
+/// 	.container{
+/// 		
+/// 		.caja{
+/// 			@include absoluto-der-abajo;
+/// 		}
+/// 	}
+/// 
+
+@mixin absoluto-b-r($b: 0, $r: 0){
+	position: absolute;
+	bottom: #{$b}px;
+	right: #{$r}px;
+}
+
+/// @Centra el contenido dentro del contenedor con Flexbox
+/// @ejemplo
+/// 
+/// 	.container{
+/// 		.caja{
+/// 			@include center-flex;
+/// 		}
+/// 	}
+/// 
+
+@mixin center-flex($column: false, $wrap: false){
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	@if ($column == column){
+		flex-direction: column;
+	}
+
+	@if ($wrap == wrap){
+		flex-wrap: wrap;
+	}
+}
+
+/// @Crea un modal
+/// @ejemplo
+/// 
+/// 	.container{
+/// 		.caja{
+/// 			@include modal
+/// 		}
+/// 	}
+/// 
+
+@mixin modal($b: 255, $o: .6, $p: r){
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	padding: 0;
+	margin: 0;
+	background-color: gray($b, $o);
+	z-index: 10000;
+
+	@include center-flex;
+
+	@if ($p == l){
+		.btn-close{
+			z-index: 2;
+			cursor: pointer;
+			display: block;
+			position: fixed;
+			top: 20px;
+			left: 30px;
+			img{
+				@include img;
+				width: 20px;
+			}
+		}
+
+		.btn-expandir{
+			display: none;
+		}
+	}
+
+	@if ($p == r){
+		.btn-close{
+			z-index: 2;
+			cursor: pointer;
+			display: block;
+			position: fixed;
+			top: 20px;
+			right: 30px;
+			img{
+				@include img;
+				width: 20px;
+			}
+		}
+
+		.btn-expandir{
+			display: none;
+		}
+	}
+
+}
+
+/// @Crea un hover de imagenes
+/// @ejemplo
+/// 
+/// 	.container{
+/// 		.caja{
+/// 			@include hover-img;
+/// 		}
+/// 	}
+/// 
+
+@mixin hover-img($b: 0, $o: .6){
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: gray($b, $o);
+
+	@include center-flex;
+}
+
+/// @Hacer Sticky los Elementos
+/// @ejemplo
+/// 
+/// 	.menu{
+/// 			@include sticky;
+/// 		}
+/// 
+
+@mixin sticky($s: 0){
+	position: sticky;
+	top: pxRem($s);
+}
+
+
+
+
+
+
+
+
+
+
+

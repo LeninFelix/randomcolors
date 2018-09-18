@@ -1,0 +1,97 @@
+/*------------------------------------------------------------------------------------*/
+/*---------------------------------Scroll-Bar-----------------------------------------*/
+/*------------------------------------------------------------------------------------*/
+
+/// @Estilos para Ancho y Alto;
+/// 
+/// @ejemplo
+///		
+///		::-webkit-scrollbar {
+///			width: 5px;
+///			height: 5px;
+///		}
+///
+
+::-webkit-scrollbar {
+    width: 1px;
+    height: 1px;
+}
+
+/// @Estilos para el Background de la barra;
+/// 
+/// @ejemplo
+///		
+///		::-webkit-scrollbar-track {
+///			background-color: red;
+///		}
+///
+
+::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+/// @Estilos para la barrita que se mueve;
+/// 
+/// @ejemplo
+///		
+///		::-webkit-scrollbar-thumb {
+///			background-color: blue;
+/// 		border-radius: 15px;
+///			border: 1px solid white;
+///		}
+///
+
+::-webkit-scrollbar-thumb {
+    background: gray(255, .3);
+    border-radius: 30px;
+
+    &:hover{
+    	background: gray(100, 1);
+    }
+}
+
+/// @Estilos para los botones de flechas del scrollbar;
+/// 
+/// @ejemplo
+///		
+///		::-webkit-scrollbar-button{
+///			width: 10px;
+/// 		height: 10px;
+///			background-color: pink;
+///		}
+///
+
+::-webkit-scrollbar-button{
+
+}
+
+/// @Estilos para la esquina de colision entre la barra horizontal y la barra vertical;
+/// 
+/// @ejemplo
+///		
+///		::-webkit-scrollbar-corner{
+///			background-color: black;
+///		}
+///
+
+::-webkit-scrollbar-corner{
+
+}
+
+/// @Estilos para la esquina de colision entre la barra horizontal y la barra vertical;
+/// @De donde se puede hacer resize (Generalmente con los TextAreas)
+/// 
+/// @ejemplo
+///		
+///		::-webkit-resizer{
+///			background-color: blue;
+///		}
+///
+
+::-webkit-resizer{
+
+}
+
+
+
+

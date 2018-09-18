@@ -1,0 +1,33 @@
+/*------------------------------------------------------------------------------------*/
+/*---------------------------------Imagen Reponsive-----------------------------------*/
+/*------------------------------------------------------------------------------------*/
+
+/// @Sistema para hacer un sistema de grillas proporcional de las columnas que quieras!
+/// 
+/// @ejemplo
+///
+///     #container-back-img {
+///       @include grid-x-column(4, 30px, .clase-x); 
+///     }
+/// 
+
+@mixin grid($desk, $tablet: 2, $gap: 0, $width: 1fr, $clase: null){
+	display: grid;
+	justify-content: center;
+	align-content: center;
+	align-items: start;
+
+	grid-gap: pxEm($gap);
+
+	grid-template: 1fr / repeat($desk, $width);
+
+	@include tablet{
+		grid-template: 1fr / repeat($tablet, $width);
+	}
+	@include phone{
+		grid-template: 1fr / repeat(1, $width);
+	}
+
+}
+
+

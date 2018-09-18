@@ -1,0 +1,116 @@
+//--------------------------------------------------------------------------------------------------------------
+//-------------------------------------------------HTML ESTILOS-------------------------------------------------
+//--------------------------------------------------------------------------------------------------------------
+
+
+
+@font-face {
+  font-family: 'Lobster';
+  src: url("fonts/Lobster-Regular.ttf") format("opentype");
+}
+@font-face {
+  font-family: 'VarelaRound';
+  src: url("fonts/VarelaRound-Regular.ttf") format("opentype");
+}
+
+
+@charset "UTF-8";
+
+::selection {
+    background: gray(100, .5);
+}
+
+html, body{
+    user-select: none;
+    width: 100%;
+    margin:0;
+    padding:0;
+    font-size: $fs-default;
+    font-family: ff(6);
+    font-weight: 400;
+    box-sizing: border-box;
+
+    // -webkit-font-smoothing: antialiased;
+    -webkit-font-smoothing: auto;
+    // -moz-osx-font-smoothing: grayscale;
+    -moz-osx-font-smoothing: auto;
+    
+}
+
+
+//$textos------------------------------------------------------------------------------------------------------------
+
+%place-margin{
+    margin: 0;
+    padding: 0;
+    font-family: ff(6);
+}
+
+h1{
+    @extend %place-margin;
+}
+h2{
+    @extend %place-margin;
+}
+h3{
+    @extend %place-margin;
+}
+h4{
+    @extend %place-margin;
+}
+h5{
+    @extend %place-margin;
+}
+h6{
+    @extend %place-margin;
+}
+p{
+    @extend %place-margin;
+}
+a{
+    @extend %place-margin;
+    text-decoration: none;
+    color: #000;
+    outline: 0;
+}
+span{
+    @extend %place-margin;
+}
+blockquote{
+    @extend %place-margin;
+}
+
+img{
+    @include img;
+}
+
+input{
+    outline: 0;
+}
+ul{
+    @extend %place-margin;
+}
+li{
+    @extend %place-margin;
+    list-style: none;
+}
+textarea{
+    outline: 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

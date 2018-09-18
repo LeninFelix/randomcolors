@@ -1,0 +1,46 @@
+//--------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------Margins-----------------------------------------------------
+//--------------------------------------------------------------------------------------------------------------
+
+
+/// Margenes Arriba y Abajo
+/// 
+/// @ejemplo
+/// 
+/// 	.margin-v{
+/// 		@include margin-v(25);
+/// 	}
+/// 
+
+@mixin margin-v($m: 10){
+	// @if(unitless($m)){
+	// 	$m: $m * 1px;
+	// }
+
+	margin-top: pxRem($m); 
+	margin-bottom: pxRem($m); 
+}
+
+/// Margenes Izquierda y Derecha
+/// 
+/// @ejemplo
+/// 
+/// 	.margin-h{
+/// 		@include margin-h(35);
+/// 	}
+/// 
+
+@mixin margin-h($m: 10){
+	@if ($m == auto){
+		margin-right: auto;
+		margin-left: auto;
+	}
+	@else if($m){
+		// @if(unitless($m)){
+		// 	$m: $m * 1px;
+		// }
+
+		margin-right: pxRem($m); 
+		margin-left: pxRem($m);
+	}
+}

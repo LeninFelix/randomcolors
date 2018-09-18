@@ -1,0 +1,41 @@
+//--------------------------------------------------------------------------------------------------------------
+//-------------------------------------------------CONTENIDO----------------------------------------------------
+//--------------------------------------------------------------------------------------------------------------
+
+.container{
+
+	$container: 40 * 2 * 1px;
+	$container-tablet: $container / 2;
+	$container-phone: $container / 4;
+	$w: 1400px;
+	
+	width: $w;
+	margin-left: auto;
+	margin-right: auto;
+
+	@include hasta($w + $container){
+		@include container($container);
+	}
+
+	@include tablet{
+		@include container($container-tablet);
+	}
+
+	@include phone{
+		@include container($container-phone);
+	}
+
+}
+
+%place-margin-seccions{
+	margin-top: 40px;
+	margin-bottom: 40px;
+}
+
+%place-min-height{
+    height: calc(100vh - 1px);
+}
+
+
+
+

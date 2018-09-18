@@ -1,0 +1,151 @@
+//-------------------------------------------------------------------------------------------------------
+//-------------------------------------------------Animaciones-------------------------------------------
+//-------------------------------------------------------------------------------------------------------
+
+/// Animacion translacional en el eje X a la Izquierda
+/// 
+/// @ejemplo
+/// 
+/// 	.class-rotatoria{
+/// 		@include trasladarXLeft(TIEMPO/opcional/, REPETICIONES/opcional/);
+/// 		@include trasladarXLeft(10, siempre);
+/// 	}
+/// 
+
+@mixin trasladarXLeft($time: 1, $count: 1, $t-X: 0){
+	// animation: ;
+	animation-name: trasladarXLeft;
+	animation-direction: normal;
+	animation-duration: #{$time}s;
+	animation-delay: 0;
+	animation-fill-mode: forwards;
+	animation-play-state: running;
+	animation-timing-function: linear;
+	
+	@if ($count == siempre){
+		animation-iteration-count: infinite;
+	}
+	@else{
+		animation-iteration-count: $count;
+	}
+
+	@keyframes trasladarXLeft{
+		0%{
+			transform: translateX(#{$t-X}px);
+		}
+		100%{
+			transform: translateX(0);
+		}
+	}
+}
+
+/// Animacion translacional en el eje X a la derecha
+/// 
+/// @ejemplo
+/// 
+/// 	.class-rotatoria{
+/// 		@include trasladarXRight(TIEMPO/opcional/, REPETICIONES/opcional/);
+/// 		@include trasladarXRight(10, siempre);
+/// 	}
+/// 
+
+@mixin trasladarXRight($time: 1, $count: 1, $t-X: 0){
+	// animation: ;
+	animation-name: trasladarXRight;
+	animation-direction: normal;
+	animation-duration: #{$time}s;
+	animation-delay: 0;
+	animation-fill-mode: forwards;
+	animation-play-state: running;
+	animation-timing-function: linear;
+	
+	@if ($count == siempre){
+		animation-iteration-count: infinite;
+	}
+	@else{
+		animation-iteration-count: $count;
+	}
+
+	@keyframes trasladarXRight{
+		0%{
+			transform: translateX(-#{$t-X}px);
+		}
+		100%{
+			transform: translateX(0);
+		}
+	}
+}
+
+/// Animacion translacional en el eje Y hacia arriba
+/// 
+/// @ejemplo
+/// 
+/// 	.class-rotatoria{
+/// 		@include trasladarYTop(TIEMPO/opcional/, REPETICIONES/opcional/);
+/// 		@include trasladarYTop(10, siempre);
+/// 	}
+/// 
+
+@mixin trasladarYTop($time: 1, $count: 1, $t-Y: 0){
+	// animation: ;
+	animation-name: trasladarYTop;
+	animation-direction: normal;
+	animation-duration: #{$time}s;
+	animation-delay: 0;
+	animation-fill-mode: forwards;
+	animation-play-state: running;
+	animation-timing-function: linear;
+	
+	@if ($count == siempre){
+		animation-iteration-count: infinite;
+	}
+	@else{
+		animation-iteration-count: $count;
+	}
+
+	@keyframes trasladarYTop{
+		0%{
+			transform: translateY(-#{$t-Y}px);
+		}
+		100%{
+			transform: translateY(0);
+		}
+	}
+}
+
+/// Animacion translacional en el eje Y hacia abajo
+/// 
+/// @ejemplo
+/// 
+/// 	.class-rotatoria{
+/// 		@include trasladarYBottom(TIEMPO/opcional/, REPETICIONES/opcional/);
+/// 		@include trasladarYBottom(10, siempre);
+/// 	}
+/// 
+
+@mixin trasladarYBottom($time: 1, $count: 1, $t-Y: 0){
+	// animation: ;
+	animation-name: trasladarYBottom;
+	animation-direction: normal;
+	animation-duration: #{$time}s;
+	animation-delay: 0;
+	animation-fill-mode: forwards;
+	animation-play-state: running;
+	animation-timing-function: linear;
+	
+	@if ($count == siempre){
+		animation-iteration-count: infinite;
+	}
+	@else{
+		animation-iteration-count: $count;
+	}
+
+	@keyframes trasladarYBottom{
+		0%{
+			transform: translateY(#{$t-Y}px);
+		}
+		100%{
+			transform: translateY(0);
+		}
+	}
+}

@@ -1,0 +1,69 @@
+//-------------------------------------------------------------------------------------------------------
+//-------------------------------------------------Animaciones-------------------------------------------
+//-------------------------------------------------------------------------------------------------------
+
+
+/// Animacion Metamorfosis
+/// 
+/// @ejemplo
+/// 
+/// 	.class-metamorfosis{
+/// 		@include metamorfosis(TIEMPO/opcional/, REPETICIONES/opcional/);
+/// 		@include metamorfosis(10, siempre);
+/// 	}
+/// 
+
+@mixin metamorfosis($time: 1, $count: 1){
+	// animation: ;
+	animation-name: metamorfosis;
+	animation-direction: alternate;
+	animation-duration: #{$time}s;
+	animation-delay: 0;
+	animation-fill-mode: forwards;
+	animation-play-state: running;
+	animation-timing-function: linear;
+	
+	@if ($count == siempre){
+		animation-iteration-count: infinite;
+	}
+	@else{
+		animation-iteration-count: $count;
+	}
+
+
+	@keyframes metamorfosis{
+		0%{
+			@include circulo;
+		}
+		10%{
+			@include estrella;
+		}
+		20%{
+			@include cruz;
+		}
+		30%{
+			@include hoja-l;
+		}
+		40%{
+			@include speed-t;
+		}
+		50%{
+			@include boomerang-b;
+		}
+		60%{
+			@include iglesia;
+		}
+		70%{
+			@include sesgado-l;
+		}
+		80%{
+			@include pad-r;
+		}
+		90%{
+			@include rombo;
+		}
+		100%{
+			@include triangulo;
+		}
+	}
+}

@@ -1,0 +1,9 @@
+
+
+@mixin texto($min, $max, $weight: 400, $family: ff(6), $min-view: phone, $max-view: desk){
+
+	@include responsive(font-size, $min, $max, $min-view, $max-view);
+	@include responsive(line-height, $min + 2, $max + 2, $min-view, $max-view);
+	font-weight: $weight;
+	font-family: $family;
+}

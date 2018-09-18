@@ -1,0 +1,116 @@
+//--------------------------------------------------------------------------------------------------------------
+//-------------------Funciones para conversiones---------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------------------
+
+/// @Funcion covertir de Porcentaje a Grados!
+/// 
+/// @ejemplo
+///
+///     #circulo-relleno {
+///       @include back-img("img-post");
+///     }
+/// 
+
+@function porcentajeGrados($numero){
+	$grados: ($numero / 100) * 360;
+	@return #{$grados}deg;
+}
+
+/// @Funcion covertir de Grados a Porcentaje!
+/// 
+/// @ejemplo
+///
+///     #circulo-relleno {
+///       @include back-img("img-post");
+///     }
+/// 
+
+@function gradosPorcentaje($numero){
+	$porcentaje: ($numero / 360) * 100;
+	@return #{$porcentaje}deg;
+}
+
+/// @Funcion covertir de Pixels a Rems!
+/// 
+/// @ejemplo
+///
+///     #circulo-relleno {
+///       @include pxRem(30);
+///     }
+///
+
+@function pxRem ($size) {
+	@if(unitless($size)){
+		$size: $size * 1px;
+	}
+
+   	$remSize: $size / $fs-default;
+   	@return $remSize * 1rem;
+}
+
+/// @Funcion covertir de Rems a Pixels!
+/// 
+/// @ejemplo
+///
+///     #circulo-relleno {
+///       @include remPx(3.25);
+///     }
+///
+
+@function remPx ($size) {
+	@if(unitless($size)){
+		$size: $size * 1rem;
+	}
+
+   	$remSize: ($size * ($fs-default / 1px) / 1rem);
+   	@return $remSize * 1px;
+}
+
+/// @Funcion covertir de Pixels a Ems!
+/// 
+/// @ejemplo
+///
+///     #circulo-relleno {
+///       @include pxEm(30);
+///     }
+///
+
+@function pxEm ($size) {
+	@if(unitless($size)){
+		$size: $size * 1px;
+	}
+
+   	$remSize: $size / $fs-default;
+   	@return $remSize * 1em;
+}
+
+/// @Funcion covertir de Ems a Pixels!
+/// 
+/// @ejemplo
+///
+///     #circulo-relleno {
+///       @include emPx(3.25);
+///     }
+///
+
+@function emPx ($size) {
+	@if(unitless($size)){
+		$size: $size * 1em;
+	}
+
+   	$remSize: ($size * ($fs-default / 1px) / 1em);
+   	@return $remSize * 1px;
+}
+
+/// @Funcion para remover todo tipo de unidades!
+/// 
+/// @ejemplo
+///
+///     #circulo-relleno {
+///       @include remover-unidades(80Em);
+///     }
+///
+
+@function remover-unidades($value) {
+	@return $value / ($value * 0 + 1);
+}

@@ -1,0 +1,129 @@
+/*------------------------------------------------------------------------------------*/
+/*--------------------------------Medidas-Responsive----------------------------------*/
+/*------------------------------------------------------------------------------------*/
+
+
+/// @Mixin para hacer responsive cualquier propiedad que requiera medidas!!
+/// @Incluso puedes hacer responsive valores Absolutos!
+/// @Los parametros son requeridos para su funcionamiento
+/// @Puedes omitir unidades de medidas si gustas!
+/// 
+/// @ejemplo
+///
+///     .titulo {
+///       @include responsive(propiedad, min-value, max-value, min-viewport, max-viewport)
+///       @include responsive(margin-bottom, 20, 40)
+///     }
+/// 
+
+@mixin responsive($propiedad, $valor-minimo, $valor-maximo, $min-viewport: phone, $max-viewport: desk) {
+
+	$min: remover-unidades($valor-minimo);
+	$max: remover-unidades($valor-maximo);
+	#{$propiedad}: #{$max}px;
+
+	//-------------------------------Max-Viewport: Desk-------------------------------------
+	@if($max-viewport == desk){
+		@if($min-viewport == phone){
+			@include desk{
+				#{$propiedad}: calc(#{$min}px + #{$max - $min} * ((100vw - 480px) / (1024 - 480)));
+			}
+
+			@include phone{
+				#{$propiedad}: #{$min}px;
+			}
+		}
+
+		@else if($min-viewport == mini-phone){
+			@include desk{
+				#{$propiedad}: calc(#{$min}px + #{$max - $min} * ((100vw - 380px) / (1024 - 380)));
+			}
+
+			@include mini-phone{
+				#{$propiedad}: #{$min}px;
+			}
+		}
+
+		@else if($min-viewport){
+			$min-view: remover-unidades($min-viewport);
+			@include desk{
+				#{$propiedad}: calc(#{$min}px + #{$max - $min} * ((100vw - #{$min-view}px) / (1024 - #{$min-view})));
+			}
+
+			@include hasta($min-view * 1px){
+				#{$propiedad}: #{$min}px;
+			}
+		}
+	}
+
+	//-------------------------------Max-Viewport: Tablet-------------------------------------
+	@else if($max-viewport == tablet){
+		@if($min-viewport == phone){
+			@include tablet{
+				#{$propiedad}: calc(#{$min}px + #{$max - $min} * ((100vw - 480px) / (768 - 480)));
+			}
+
+			@include phone{
+				#{$propiedad}: #{$min}px;
+			}
+		}
+		
+		@else if($min-viewport == mini-phone){
+			@include tablet{
+				#{$propiedad}: calc(#{$min}px + #{$max - $min} * ((100vw - 380px) / (768 - 380)));
+			}
+
+			@include mini-phone{
+				#{$propiedad}: #{$min}px;
+			}
+		}
+
+		@else if($min-viewport){
+			$min-view: remover-unidades($min-viewport);
+			@include tablet{
+				#{$propiedad}: calc(#{$min}px + #{$max - $min} * ((100vw - #{$min-view}px) / (768 - #{$min-view})));
+			}
+
+			@include hasta($min-view * 1px){
+				#{$propiedad}: #{$min}px;
+			}
+		}
+	}
+
+	//-------------------------------Max-Viewport: Defined-------------------------------------
+
+	@else if($max-viewport){
+		$max-view: remover-unidades($max-viewport);
+		@if($min-viewport == phone){
+			@include hasta($max-view * 1px){
+				#{$propiedad}: calc(#{$min}px + #{$max - $min} * ((100vw - 480px) / (#{$max-view} - 480)));
+			}
+
+			@include phone{
+				#{$propiedad}: #{$min}px;
+			}
+		}
+		
+		@else if($min-viewport == mini-phone){
+			@include hasta($max-view * 1px){
+				#{$propiedad}: calc(#{$min}px + #{$max - $min} * ((100vw - 380px) / (#{$max-view} - 380)));
+			}
+
+			@include mini-phone{
+				#{$propiedad}: #{$min}px;
+			}
+		}
+		
+		@else if($min-viewport){
+			$min-view: remover-unidades($min-viewport);
+			@include hasta($max-view * 1px){
+				#{$propiedad}: calc(#{$min}px + #{$max - $min} * ((100vw - #{$min-view}px) / ((#{$max-view}) - (#{$min-view}))));
+			}
+
+			@include hasta($min-view * 1px){
+				#{$propiedad}: #{$min}px;
+			}
+		}
+	}
+
+}

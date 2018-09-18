@@ -1,0 +1,437 @@
+
+@mixin menu($responsivoEn: tablet, $fijo: false, $backgroundColor: $black, $altura: 56px, $widthBorder: 0, $colorBorder: invert($backgroundColor)){
+	position: relative;
+	z-index: 8000;
+	background-color: $backgroundColor;
+	@include center-flex;
+
+	border-bottom: $widthBorder solid $colorBorder;
+
+	transition: .5s;
+	
+	@if($fijo == true){
+		@include sticky;
+	}
+
+	@if($responsivoEn == tablet){
+		@include tablet{
+			height: pxRem($altura);
+			width: 100%;
+			position: fixed;
+			top: 0;
+			left: 0;
+
+			@at-root{
+				.wrapper{
+					margin-top: $altura + 40px;
+				}
+			}
+		}
+	}
+	@else if($responsivoEn == phone){
+		@include phone{
+			height: pxRem($altura);
+			width: 100%;
+			position: fixed;
+			top: 0;
+			left: 0;
+
+			@at-root{
+				.wrapper{
+					margin-top: $altura + 40px;
+				}
+			}
+		}
+	}
+	@else{
+		@include hasta($responsivoEn){
+			height: pxRem($altura);
+			width: 100%;
+			position: fixed;
+			top: 0;
+			left: 0;
+
+			@at-root{
+				.wrapper{
+					margin-top: $altura + 40px;
+				}
+			}
+		}
+	}
+
+	.menu,
+	.menu-principal{
+		
+		@include center-flex;
+		align-items: flex-start;
+		justify-content: space-between;
+
+		@if($responsivoEn == tablet){
+			@include tablet{
+				align-items: center;
+			}
+		}
+		@else if($responsivoEn == phone){
+			@include phone{
+				align-items: center;
+			}
+		}
+		@else{
+			@include hasta($responsivoEn){
+				align-items: center;
+			}
+		}
+
+		&.visible{
+			ul{
+				animation: slideDown .3s both alternate;
+
+				@keyframes slideDown{
+					100%{
+						height: calc(100vh - #{pxRem($altura)});
+						// opacity: 1;
+					}
+				}
+			}
+		}
+		&.unvisible{
+			ul{
+				animation: slideUp .3s;
+				@keyframes slideUp{
+					0%{
+						height: calc(100vh - #{pxRem($altura)});
+						// opacity: 1;
+					}
+					100%{
+						height: 0;
+						// opacity: 0;
+					}
+				}
+			}
+		}
+
+		.logo{
+			@include center-flex;
+			justify-content: flex-start;
+			align-self: flex-start;
+
+			img{
+				width: pxRem($altura * 6 + 6px);
+				@include phone{
+					width: 265px;
+					
+				}
+			}
+
+		}
+
+		> ul{
+			@include center-flex;
+			align-items: flex-start;
+			justify-content: flex-end;
+			background-color: $backgroundColor;
+
+			@if($responsivoEn == tablet){
+				@include tablet{
+					overflow: hidden;
+					width: 100%;
+					position: absolute;
+					top: pxRem($altura);
+					left: 0;
+
+					height: 0;
+
+					flex-direction: column;
+					@include center-flex;
+				}
+			}
+			@else if($responsivoEn == phone){
+				@include phone{
+					overflow: hidden;
+					width: 100%;
+					position: absolute;
+					top: pxRem($altura);
+					left: 0;
+
+					height: 0;
+
+					flex-direction: column;
+					@include center-flex;
+				}
+			}
+			@else{
+				@include hasta($responsivoEn){
+					overflow: hidden;
+					width: 100%;
+					position: absolute;
+					top: pxRem($altura);
+					left: 0;
+
+					height: 0;
+
+					flex-direction: column;
+					@include center-flex;
+				}
+			}
+
+			> li{
+				position: relative;
+				transition: .1s;
+				@include padding-h;
+
+				padding-top: (#{remover-unidades($altura / 2 - 10)}px);
+				padding-bottom: (#{remover-unidades($altura / 2 - 10)}px);
+
+				font-family: ff(6);
+
+				@if($responsivoEn == tablet){
+					@include tablet{
+						@include padding-v;
+					}
+				}
+				@else if($responsivoEn == phone){
+					@include phone{
+						@include padding-v;
+					}
+				}
+				@else{
+					@include hasta($responsivoEn){
+						@include padding-v;
+					}
+				}
+
+				> span{
+					cursor: pointer;
+					@if($backgroundColor == #000){
+						color: invert($backgroundColor);
+					}
+					@else{
+						color: $black;
+					}
+
+					&:hover{
+						@if($backgroundColor == #000){
+							color: darken(invert($backgroundColor), 50%);
+						}
+						@else if($backgroundColor == #fff){
+							color: lighten(invert($backgroundColor), 80%);
+						}
+						@else if($backgroundColor == transparent){
+							color: gray(100, 0.4);
+						}
+						@else{
+							color: lighten(invert($backgroundColor), 50%);
+						}
+					}
+				}
+				
+				> a{
+					font-family: ff(6);
+
+					@if($backgroundColor == #000){
+						color: invert($backgroundColor);
+					}
+					@else{
+						color: $black;
+					}
+
+					&:hover{
+						@if($backgroundColor == #000){
+							color: darken(invert($backgroundColor), 50%);
+						}
+						@else if($backgroundColor == #fff){
+							color: lighten(invert($backgroundColor), 80%);
+						}
+						@else if($backgroundColor == transparent){
+							color: gray(100, 0.4);
+						}
+						@else{
+							color: lighten(invert($backgroundColor), 50%);
+						}
+					}
+				}
+
+				&:hover{
+					ul{
+						display: block;
+					}
+
+					@if($responsivoEn == tablet){
+						@include tablet{
+							> ul{
+								display: none;
+							}
+						}
+					}
+					@else if($responsivoEn == phone){
+						@include phone{
+							> ul{
+								display: none;
+							}
+						}
+					}
+					@else{
+						@include hasta($responsivoEn){
+							> ul{
+								display: none;
+							}
+						}
+					}
+				}
+
+				> ul{
+					width: 1px;
+					display: none;
+					// top: pxRem($altura) / 2 + pxRem(19) + pxRem($widthBorder);
+					background-color: $backgroundColor;
+					margin-bottom: (#{remover-unidades($altura / 2 - 10)}px);
+
+					@if($responsivoEn == tablet){
+						@include tablet{
+							width: unset;
+							position: absolute;
+							margin: 0;
+						}
+					}
+					@else if($responsivoEn == phone){
+						@include phone{
+							width: unset;
+							position: absolute;
+							margin: 0;
+						}
+					}
+					@else{
+						@include hasta($responsivoEn){
+							width: unset;
+							position: absolute;
+							margin: 0;
+						}
+					}
+
+					> li{
+						@include padding-v;
+						
+						> span{
+							cursor: pointer;
+							@if($backgroundColor == #000){
+								color: invert($backgroundColor);
+							}
+							@else{
+								color: $black;
+							}
+
+							&:hover{
+								@if($backgroundColor == #000){
+									color: darken(invert($backgroundColor), 50%);
+								}
+								@else if($backgroundColor == #fff){
+									color: lighten(invert($backgroundColor), 80%);
+								}
+								@else if($backgroundColor == transparent){
+									color: gray(100, 0.4);
+								}
+								@else{
+									color: lighten(invert($backgroundColor), 50%);
+								}
+							}
+						}
+
+						> a{
+							font-family: ff(6);
+
+							@if($backgroundColor == #000){
+								color: invert($backgroundColor);
+							}
+							@else{
+								color: $black;
+							}
+
+							&:hover{
+								@if($backgroundColor == #000){
+									color: darken(invert($backgroundColor), 50%);
+								}
+								@else if($backgroundColor == #fff){
+									color: lighten(invert($backgroundColor), 80%);
+								}
+								@else if($backgroundColor == transparent){
+									color: gray(100, 0.4);
+								}
+								@else{
+									color: lighten(invert($backgroundColor), 50%);
+								}
+							}
+						}
+						
+					}
+				}
+
+			}
+		}
+		
+		.btn-hamburguesa{
+			z-index: 2;
+			@include center-flex;
+			align-items: flex-end;
+			flex-direction: column;
+
+			display: none;
+			cursor: pointer;
+			transition: .1s;
+			
+			margin: pxRem(10px);
+
+			&:hover{
+				.linea-hamburguesa{
+					&:nth-child(2),
+					&:last-child{
+						width: 100%;
+					}
+				}
+			}
+			&:active{
+				transform: scale(.8);
+			}
+
+			@if($responsivoEn == tablet){
+				@include tablet{
+					display: flex;
+				}
+			}
+			@else if($responsivoEn == phone){
+				@include phone{
+					display: flex;
+				}
+			}
+			@else{
+				@include hasta($responsivoEn){
+					display: flex;
+				}
+			}
+
+			.linea-hamburguesa{
+				border-radius: pxRem(10px);
+				width: pxRem(25px);
+				height: pxRem(2px);
+				@include margin-v(3);
+
+				transition: .3s;
+
+				@if($backgroundColor == #000){
+					background-color: invert($backgroundColor);
+				}
+				@else{
+					background-color: $black;
+				}
+
+				&:nth-child(2){
+					width: 75%;
+				}
+				&:last-child{
+					width: 50%;
+				}
+			}
+		}
+		
+	}
+	
+}

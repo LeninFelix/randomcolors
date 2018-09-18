@@ -1,0 +1,42 @@
+//--------------------------------------------------------------------------------------------------------------
+//-------------------------------------------------Paddings-----------------------------------------------------
+//--------------------------------------------------------------------------------------------------------------
+
+
+/// Paddings Arriba y Abajo
+/// 
+/// @ejemplo
+/// 
+/// 	.margin-v{
+/// 		@include padding-v(25);
+/// 	}
+/// 
+
+@mixin padding-v($p: 10){
+	// @if(unitless($p)){
+	// 	$p: $p * 1px;
+	// }
+
+	padding-top: pxRem($p); 
+	padding-bottom: pxRem($p);  
+}
+
+/// Paddings Izquierda y Derecha
+/// 
+/// @ejemplo
+/// 
+/// 	.margin-h{
+/// 		@include padding-h(35);
+/// 	}
+/// 
+
+@mixin padding-h($p: 10){
+	// @if(unitless($p)){
+	// 	$p: $p * 1px;
+	// }
+
+	padding-right: pxRem($p); 
+	padding-left: pxRem($p); 
+}
+
+

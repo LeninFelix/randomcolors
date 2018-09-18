@@ -1,0 +1,172 @@
+
+
+.back-home{
+	@include responsive(padding-bottom, 20min, 50max);
+	@include responsive(padding-top, 20min, 50max);
+
+	// font-family: 'Lobster', cursive;
+	// font-family: 'Varela Round', sans-serif;
+
+	.home{
+		text-align: center;
+
+		.titulo-general{
+			margin-bottom: 20px;
+			@include center-flex;
+
+			h1{
+				cursor: pointer;
+				span{
+					@include texto(36min, 48max, bold, ff(1));
+				}
+			}
+		}
+
+		.descripcion{
+			margin-bottom: 20px;
+			@include margin-h(50);
+			@include center-flex(column);
+
+			h2{
+				text-align: center;
+				margin-bottom: 20px;
+				@include texto(18min, 24max, normal, ff(1));
+			}
+
+			p{
+				@include responsive(margin-bottom, 20, 30);
+				text-align: center;
+				@include texto(16min, 22max, normal, ff(2));
+			}
+		}
+
+
+
+
+		.btn-color{
+			transition: .1s;
+			cursor: pointer;
+			&:active{
+				transform: scale(.9)
+			}
+			&:hover{
+				p{
+					text-shadow: 0 0 5px $white;
+				}
+			}
+			width: 100px;
+			padding: 30px;
+			background-color: #45E069;
+			box-shadow: 0 5px 0px 0 #28803C;
+			border-radius: 20px;
+
+			@include center-flex;
+
+			p{
+				@include texto(14,16, normal, ff(2));
+				transition: .3s;
+				color: $white;
+			}
+		}
+
+		.caja-fondo{
+			background-color: $white;
+			border-radius: 10px;
+			box-shadow: 0 3px 10px 0 $black;
+			@include padding-v(30);
+		}
+
+		.caja-color-back{
+			@include responsive(margin-bottom, 10, 50);
+			@include center-flex(column);
+				
+			.titulo{
+				margin-bottom: 30px;
+				@include center-flex;
+				h2{
+					@include texto(24,32, normal, ff(1));
+				}
+			}
+
+			.back-color{
+				@include center-flex;
+				width: 80%;
+				@include margin-h(auto);
+			}
+
+		}
+
+		.caja-color-tono{
+			@include responsive(margin-bottom, 10, 50);
+			@include center-flex(column);
+
+			.titulo{
+				margin-bottom: 30px;
+				@include center-flex;
+				h2{
+					@include texto(24,32, normal, ff(1));
+				}
+			}
+
+			.btns{
+				width: 80%;
+				@include margin-h(auto);
+				@include grid(2, 2);
+				justify-items: center;
+
+				.btn-color{
+					&:nth-of-type(1),
+					&:nth-of-type(2){
+						margin-bottom: 30px;
+					}
+
+					@include phone{
+						&:nth-of-type(3){
+							margin-bottom: 30px;
+						}
+						&:last-child{
+							margin-bottom: 0;
+						}
+					}
+				}
+			}
+
+		}
+
+		.caja-color-opacidad{
+			@include responsive(margin-bottom, 10, 50);
+			@include center-flex(column);
+
+			.titulo{
+				margin-bottom: 30px;
+				@include center-flex;
+				h2{
+					@include texto(24,32, normal, ff(1));
+				}
+			}
+
+			.btns{
+				width: 80%;
+				@include margin-h(auto);
+				@include grid(2, 2);
+				justify-items: center;
+
+				.btn-color{
+					&:nth-of-type(1),
+					&:nth-of-type(2){
+						margin-bottom: 30px;
+					}
+
+					@include phone{
+						&:nth-of-type(3){
+							margin-bottom: 30px;
+						}
+						&:last-child{
+							margin-bottom: 0;
+						}
+					}
+				}
+			}
+		}
+	}
+}

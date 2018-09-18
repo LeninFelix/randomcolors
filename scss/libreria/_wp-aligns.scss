@@ -1,0 +1,51 @@
+$margen: 60px;
+
+.alignleft{
+    float: left;
+    max-width: calc(50% - #{$margen});
+    max-width: 50%;
+    margin-left: 0;
+
+    margin-right: $margen;
+    margin-top: $margen;
+    margin-bottom: $margen;
+    display: inline-block;
+
+    @include tablet{
+        // max-width: calc(50% - #{$margen / 3});
+        margin-right: ($margen / 3) * 2;
+        margin-top: ($margen / 3) * 2;
+        margin-bottom: ($margen / 3) * 2;
+    }
+}
+
+.aligncenter{
+    max-width: 100%;
+    clear: both;
+    display: block;
+    margin: $margen auto;
+    // margin-bottom: $margen;
+
+    @include tablet{
+        margin: ($margen / 3) auto;
+    }
+}
+
+.alignright{
+    float: right;
+    // max-width: calc(50% - #{$margen});
+    max-width: 50%;
+    margin-right: 0;
+
+    margin-left: $margen;
+    margin-top: $margen;
+    margin-bottom: $margen;
+    display: inline-block;
+
+    @include tablet{
+        // max-width: calc(50% - #{$margen / 6});
+        margin-left: ($margen / 3) * 2;
+        margin-top: ($margen / 3) * 2;
+        margin-bottom: ($margen / 3) * 2;
+    }
+}
